@@ -1,5 +1,4 @@
-#started
-To run the server
+Para rodar a aplicação:
 
     pip install -r "requirements.txt"
     python main.py
