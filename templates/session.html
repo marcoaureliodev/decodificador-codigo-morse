@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Decodificador de código morse</title>
+    <title>Desafio Técnico | CESAR Labs</title>
 </head>
 <body>
   <main class="flex-shrink-0">
       <div class="container">
-          <h1 class="mt-5">Cesar School </h1>
+          <h1 class="mt-5">Desafio Técnico | CESAR Labs</h1>
           <p class="lead">Teste decodificador código morse</p>
           <div class="row">
-              <span class="text-muted">Não há códigos decodificados.</span>
+              <span class="text-muted">Como não havia nenhuma codificação informando espaço na relação enviada,
+              foi adicionado "/" como caractere de espaço.</span>
+          </div>
+          <div class="row">
+              <span class="text-muted code-morse-txt">Não há códigos decodificados.</span>
               <div class="message_holder"></div>
           </div>
           <div class="row">
               <form action="" method="POST" class="row g-3">
                   <div class="col-auto">
                       <label for="codeMorseDecode" class="visually-hidden">Password</label>
-                      <input type="text" value="--. . . -.- ... -....- ..-. --- .-. -....- --. . . -.- ..."
-                             id="codeMorseDecode" class="message form-control" placeholder="Messages"/>
+                      <input type="text" value="-.. . ... .- ..-. .. ---  / - . -.-. -. .. -.-. ---  / -.-. . ... .- .-.  / .-.. .- -... ... "
+                             id="codeMorseDecode" class="message form-control" placeholder="Mensagem"/>
                   </div>
                   <div class="col-auto">
                       <input type="submit" class="btn btn-primary mb-3"/>
@@ -44,12 +48,12 @@
             socket.emit( 'code morse decode', {
               message : user_input
             } )
-            $( 'input.message' ).val( '--. . . -.- ... -....- ..-. --- .-. -....- --. . . -.- ...' ).focus()
+            $( 'input.message' ).val('').focus()
           } )
         } );
         socket.on( 'code morse decoded', function( msg ) {
           if( typeof msg.message !== 'undefined' ) {
-            $('.text-muted').remove();
+            $('.code-morse-txt').remove();
             $( 'div.message_holder' ).append( '<div class="alert alert-success" role="alert">'+msg.message+'</div>' )
           }
         });
